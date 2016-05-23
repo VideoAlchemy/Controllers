@@ -1,32 +1,22 @@
-/* QA_FP13_SerialReadTest SystemsCheck
-[x] Verified in Processing 2.0b5 
-[x] verified in Processing 1.5.1
-[ ] updated for Processing 3.1.1 (2016_05_22)
 
-jason stephens
-ITP 2011.12
-updated 2012.10 for the VideoAlchemy Exhibit at Radiance
+/* FP_13_demoSketch
+j.stephens  - 2016_05_22
+Processing 3.1.1 
 
 The F-P13 derives its name from the current possibility
 that 13 may be Pregnant with Flynn.
-
-Version_01 : Systems Check : A calibration and testing application
-
 */
 
-
-// import the serial library:
 import processing.serial.*;
 
 Serial myPort;    // instance of the serial library
 int[] sensorValues = new int[10];  // array to hold the sensor values
 
-
 void setup() {
   // set the size of the window:
-  size(800,600);
+  //size(800,600);
+  fullScreen();
   noStroke();
-
  
   // Print a list of the serial ports, for debugging purposes:
   printArray(Serial.list());
@@ -37,12 +27,9 @@ void setup() {
   // Generate a serialEvent only after receiving a full array AND /n
   myPort.bufferUntil('\n');
  
-  // clear the serial buffer:
+  // Clear the serial buffer:
   myPort.clear();
   
-  // don't draw strokes around the shapes:
-  //noStroke();
-
 }
 
 void draw() {
