@@ -24,13 +24,13 @@ int[] sensorValues = new int[10];  // array to hold the sensor values
 void setup() {
   // set the size of the window:
   size(800,600);
-  
-  // 1. List all the available serial ports
-  println(Serial.list());
+ 
+  // Print a list of the serial ports, for debugging purposes:
+  printArray(Serial.list());
   
   /* 2. open the serial port.  If my Arduino shows up as the first port in the list,
    then Serial.list()[0] */
-  myPort = new Serial(this, Serial.list()[4], 9600); // or, in this case, 4
+  myPort = new Serial(this, Serial.list()[3], 9600); // or, in this case, 4
   
   // 3. don't generate a serialEvent unless you get a linefeed in from the microcontroller:
   myPort.bufferUntil('\n');
@@ -89,5 +89,3 @@ void serialEvent(Serial myPort) {
     }
   }
 }
-
-
