@@ -13,8 +13,7 @@ Serial myPort;                       // instance of the serial library
 int[] sensorValues = new int[10];    // array to hold the sensor values
 
 boolean centerMode = false;
-int top1, top2, top3
-, top4;
+int top1, top2, top3, top4;
 int bot1, bot2, bot3, bot4, bot5, bot6;
 float scl;
 float x, y, w, h, r1, tx, ty;
@@ -25,9 +24,9 @@ float alpha;
 // PImage arrays to hold the source images.
 int numOfEmblems   = 99; //total = 25 
 PImage[] images = new PImage[numOfEmblems];
-int imageIndex  = int(random(numOfEmblems));
-int imageIndex2 = int(random(numOfEmblems));
-int imageIndex3 = int(random(numOfEmblems));
+int imageIndex  = int(random(numOfEmblems-1));
+int imageIndex2 = int(random(numOfEmblems-1));
+int imageIndex3 = int(random(numOfEmblems-1));
 
 float rot = 0;
 float rspeed;
@@ -36,8 +35,9 @@ String SNAP_FOLDER_PATH = "../../../../Dropbox/_SNAPS/2016_fp_13/";
 
 void setup() {
   size(1024, 768, P2D);
+  //size(width, height, P2D);
   
-  //fullScreen();
+  //fullScreen(2, P2D);
   background(0);
   noStroke();
   setupSerialPort();
@@ -113,7 +113,7 @@ void draw() {
   popMatrix();
 
   imageIndex = int(map(bot1, 10, 1023, 0, numOfEmblems));
-  imageIndex2 = int(map(bot1, 10, 1023, numOfEmblems, 0));
+  imageIndex2 = int(map(bot1, 10, 1023, numOfEmblems-1, 1));
   imageIndex3 = int(map(bot1, 10, 1023, 0, numOfEmblems*.5));
 
   rspeed = map(bot3, 0, 1023, -5, 5);
@@ -126,9 +126,9 @@ void draw() {
 }  
 
 void mousePressed() {
-  imageIndex = int(random(numOfEmblems));
-  imageIndex2 = int(random(numOfEmblems));
-  imageIndex3 = int(random(numOfEmblems));
+  imageIndex = int(random(numOfEmblems-1));
+  imageIndex2 = int(random(numOfEmblems-1));
+  imageIndex3 = int(random(numOfEmblems-1));
 
   //1
   r1 = random(-200, 200);
